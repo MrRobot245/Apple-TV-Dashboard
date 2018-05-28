@@ -97,7 +97,7 @@ typedef struct _Input
         [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"homepage"]]]];
     }
     else {
-        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: @"http://www.google.com"]]];
+        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: @"http://resolutionim.com:8080/"]]];
     }
 }
 -(void)initWebView {
@@ -137,11 +137,8 @@ typedef struct _Input
     scrollView.scrollEnabled = NO;
     
     [self.webview setUserInteractionEnabled:NO];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ScalePagesToFit"]) {
-        [self offsetCorrection:YES];
-    } else {
-        [self offsetCorrection:NO];
-    }
+    [self offsetCorrection:YES];
+
 }
 -(void)offsetCorrection:(bool)yes {
     UIScrollView *scrollView = [self.webview scrollView];
@@ -168,7 +165,7 @@ typedef struct _Input
     playPauseOrMenuDoubleTapRecognizer.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause], [NSNumber numberWithInteger:UIPressTypeMenu]];
     [self.view addGestureRecognizer:playPauseOrMenuDoubleTapRecognizer];
     
-    cursorView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
+    cursorView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     cursorView.center = CGPointMake(CGRectGetMidX([UIScreen mainScreen].bounds), CGRectGetMidY([UIScreen mainScreen].bounds));
     cursorView.image = [UIImage imageNamed:@"Cursor"];
     cursorView.backgroundColor = [UIColor clearColor];

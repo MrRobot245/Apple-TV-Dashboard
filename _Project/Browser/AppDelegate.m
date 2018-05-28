@@ -17,6 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    application.idleTimerDisabled = true;
+    [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 	// Override point for customization after application launch.
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"MobileMode"]) {
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"Mozilla/5.0 (iPad; CPU OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1", @"UserAgent", nil];
@@ -84,5 +86,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:@"ApplicationCookie"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 
 @end
